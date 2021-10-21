@@ -37,7 +37,7 @@ echo >> all_log_system.txt
 
 
 echo "===========================================================================" >> all_log_system.txt
-echo "(2) lshw -class system" >> all_log_system.txt
+echo "(1-1) lshw -class system" >> all_log_system.txt
 echo "sudo lshw -class system" >> all_log_system.txt
 echo "===========================================================================" >> all_log_system.txt
 sudo lshw -class system >> all_log_system.txt
@@ -49,7 +49,7 @@ echo >> all_log_system.txt
 
 
 echo "===========================================================================" >> all_log_system.txt
-echo "(3) lshw -class bridge" >> all_log_system.txt
+echo "(1-2) lshw -class bridge" >> all_log_system.txt
 echo "sudo lshw -class bridge" >> all_log_system.txt
 echo "===========================================================================" >> all_log_system.txt
 sudo lshw -class bridge >> all_log_system.txt
@@ -61,7 +61,7 @@ echo >> all_log_system.txt
 
 
 echo "===========================================================================" >> all_log_system.txt
-echo "(4) lshw -class memory" >> all_log_system.txt
+echo "(1-3) lshw -class memory" >> all_log_system.txt
 echo "sudo lshw -class memory" >> all_log_system.txt
 echo "===========================================================================" >> all_log_system.txt
 sudo lshw -class memory >> all_log_system.txt
@@ -73,7 +73,7 @@ echo >> all_log_system.txt
 
 
 echo "===========================================================================" >> all_log_system.txt
-echo "(5) lshw -class processor" >> all_log_system.txt
+echo "(1-4) lshw -class processor" >> all_log_system.txt
 echo "sudo lshw -class processor" >> all_log_system.txt
 echo "===========================================================================" >> all_log_system.txt
 sudo lshw -class processor >> all_log_system.txt
@@ -85,7 +85,7 @@ echo >> all_log_system.txt
 
 
 echo "===========================================================================" >> all_log_system.txt
-echo "(6) lshw -class address" >> all_log_system.txt
+echo "(1-5) lshw -class address" >> all_log_system.txt
 echo "sudo lshw -class address" >> all_log_system.txt
 echo "===========================================================================" >> all_log_system.txt
 sudo lshw -class address >> all_log_system.txt
@@ -97,7 +97,7 @@ echo >> all_log_system.txt
 
 
 echo "===========================================================================" >> all_log_system.txt
-echo "(7) lshw -class storage" >> all_log_system.txt
+echo "(1-6) lshw -class storage" >> all_log_system.txt
 echo "sudo lshw -class storage" >> all_log_system.txt
 echo "===========================================================================" >> all_log_system.txt
 sudo lshw -class storage >> all_log_system.txt
@@ -109,7 +109,7 @@ echo >> all_log_system.txt
 
 
 echo "===========================================================================" >> all_log_system.txt
-echo "(8) lshw -class disk" >> all_log_system.txt
+echo "(1-7) lshw -class disk" >> all_log_system.txt
 echo "sudo lshw -class disk" >> all_log_system.txt
 echo "===========================================================================" >> all_log_system.txt
 sudo lshw -class disk >> all_log_system.txt
@@ -121,7 +121,7 @@ echo >> all_log_system.txt
 
 
 echo "===========================================================================" >> all_log_system.txt
-echo "(9) lshw -class tape" >> all_log_system.txt
+echo "(1-8) lshw -class tape" >> all_log_system.txt
 echo "sudo lshw -class tape" >> all_log_system.txt
 echo "===========================================================================" >> all_log_system.txt
 sudo lshw -class tape >> all_log_system.txt
@@ -133,7 +133,7 @@ echo >> all_log_system.txt
 
 
 echo "===========================================================================" >> all_log_system.txt
-echo "(10) lshw -class bus" >> all_log_system.txt
+echo "(1-9) lshw -class bus" >> all_log_system.txt
 echo "sudo lshw -class bus" >> all_log_system.txt
 echo "===========================================================================" >> all_log_system.txt
 sudo lshw -class bus >> all_log_system.txt
@@ -145,7 +145,7 @@ echo >> all_log_system.txt
 
 
 echo "===========================================================================" >> all_log_system.txt
-echo "(11) lshw -class network" >> all_log_system.txt
+echo "(1-10) lshw -class network" >> all_log_system.txt
 echo "sudo lshw -class network" >> all_log_system.txt
 echo "===========================================================================" >> all_log_system.txt
 sudo lshw -class network >> all_log_system.txt
@@ -157,7 +157,7 @@ echo >> all_log_system.txt
 
 
 echo "===========================================================================" >> all_log_system.txt
-echo "(12) lshw -class display" >> all_log_system.txt
+echo "(1-11) lshw -class display" >> all_log_system.txt
 echo "sudo lshw -class display" >> all_log_system.txt
 echo "===========================================================================" >> all_log_system.txt
 sudo lshw -class display >> all_log_system.txt
@@ -169,7 +169,7 @@ echo >> all_log_system.txt
 
 
 echo "===========================================================================" >> all_log_system.txt
-echo "(13) lshw -class input" >> all_log_system.txt
+echo "(1-12) lshw -class input" >> all_log_system.txt
 echo "sudo lshw -class input" >> all_log_system.txt
 echo "===========================================================================" >> all_log_system.txt
 sudo lshw -class input >> all_log_system.txt
@@ -181,7 +181,7 @@ echo >> all_log_system.txt
 
 
 echo "===========================================================================" >> all_log_system.txt
-echo "(14) lshw -class printer" >> all_log_system.txt
+echo "(1-13) lshw -class printer" >> all_log_system.txt
 echo "sudo lshw -class printer" >> all_log_system.txt
 echo "===========================================================================" >> all_log_system.txt
 sudo lshw -class printer >> all_log_system.txt
@@ -193,7 +193,7 @@ echo >> all_log_system.txt
 
 
 echo "===========================================================================" >> all_log_system.txt
-echo "(15) lshw -class multimedia" >> all_log_system.txt
+echo "(1-14) lshw -class multimedia" >> all_log_system.txt
 echo "sudo lshw -class multimedia" >> all_log_system.txt
 echo "===========================================================================" >> all_log_system.txt
 sudo lshw -class multimedia >> all_log_system.txt
@@ -205,7 +205,7 @@ echo >> all_log_system.txt
 
 
 echo "===========================================================================" >> all_log_system.txt
-echo "(16) lshw -class communication" >> all_log_system.txt
+echo "(1-15) lshw -class communication" >> all_log_system.txt
 echo "sudo lshw -class communication" >> all_log_system.txt
 echo "===========================================================================" >> all_log_system.txt
 sudo lshw -class communication >> all_log_system.txt
@@ -218,7 +218,7 @@ echo >> all_log_system.txt
 
 
 echo "===========================================================================" >> all_log_system.txt
-echo "(17) lshw -class power" >> all_log_system.txt
+echo "(1-16) lshw -class power" >> all_log_system.txt
 echo "sudo lshw -class power" >> all_log_system.txt
 echo "===========================================================================" >> all_log_system.txt
 sudo lshw -class power >> all_log_system.txt
@@ -230,7 +230,7 @@ echo >> all_log_system.txt
 
 
 echo "===========================================================================" >> all_log_system.txt
-echo "(18) lshw -class volume" >> all_log_system.txt
+echo "(1-17) lshw -class volume" >> all_log_system.txt
 echo "sudo lshw -class volume" >> all_log_system.txt
 echo "===========================================================================" >> all_log_system.txt
 sudo lshw -class volume >> all_log_system.txt
@@ -243,7 +243,7 @@ echo >> all_log_system.txt
 
 
 echo "===========================================================================" >> all_log_system.txt
-echo "(19) lshw -class generic" >> all_log_system.txt
+echo "() lshw -class generic" >> all_log_system.txt
 echo "sudo lshw -class generic" >> all_log_system.txt
 echo "===========================================================================" >> all_log_system.txt
 sudo lshw -class generic >> all_log_system.txt
