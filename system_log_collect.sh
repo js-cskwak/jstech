@@ -351,28 +351,29 @@ if [ -x /usr/bin/systool ]; then
    echo >> $logFile
 fi
 
-echo "===========================================================================" >> $logFile
-echo "(5-1) LPe16002(FC HBA) WWPN(World wide Port Name) 정보 확인(port1)" >> $logFile
-echo "cat /sys/class/fc_host/host1/port_name" >> $logFile
-echo "===========================================================================" >> $logFile
-cat /sys/class/fc_host/host1/port_name >> $logFile
-sleep 1
-echo >> $logFile
-echo >> $logFile
-echo >> $logFile
+if [ -e /sys/class/fc_host/host1/port_name ]; then
+   echo "===========================================================================" >> $logFile
+   echo "(5-1) LPe16002(FC HBA) WWPN(World wide Port Name) 정보 확인(port1)" >> $logFile
+   echo "cat /sys/class/fc_host/host1/port_name" >> $logFile
+   echo "===========================================================================" >> $logFile
+   cat /sys/class/fc_host/host1/port_name >> $logFile
+   sleep 1
+   echo >> $logFile
+   echo >> $logFile
+   echo >> $logFile
+fi
 
-
-
-echo "===========================================================================" >> $logFile
-echo "(5-2) LPe16002(FC HBA) WWPN(World wide Port Name) 정보 확인(port2)" >> $logFile
-echo "cat /sys/class/fc_host/host2/port_name" >> $logFile
-echo "===========================================================================" >> $logFile
-cat /sys/class/fc_host/host2/port_name >> $logFile
-sleep 1
-echo >> $logFile
-echo >> $logFile
-echo >> $logFile
-
+if [ -e /sys/class/fc_host/host2/port_name ]; then
+   echo "===========================================================================" >> $logFile
+   echo "(5-2) LPe16002(FC HBA) WWPN(World wide Port Name) 정보 확인(port2)" >> $logFile
+   echo "cat /sys/class/fc_host/host2/port_name" >> $logFile
+   echo "===========================================================================" >> $logFile
+   cat /sys/class/fc_host/host2/port_name >> $logFile
+   sleep 1
+   echo >> $logFile
+   echo >> $logFile
+   echo >> $logFile
+fi
 
 echo "===========================================================================" >> $logFile
 echo "(6) 전체 PCI Slot 수와 Slot Type 확인" >> $logFile
@@ -898,7 +899,7 @@ STORAGE(){
 
   [[ -n $scsi_blacklist ]] && bl=y || { bl=n; scsi_blacklist=NULL; }
   [[ -f $1 ]] && partitions_input=$1 || partitions_input=$1/proc/partitions
-  echo -e "  ${c[H2]}Whole Disks from /proc/partitions:${c[0]}"
+  echo -e "  Whole Disks from /proc/partitions:" >> $logFile
   egrep -v "${scsi_blacklist%?}" "$partitions_input" |
     gawk -vblacklisted=$bl -vblacklist_devcount=$(wc -w <<<"${scsi_blacklist//|/ }") -vcolor_grey="${c[lgrey]}" -vH_IMP="${c[Imp]}" -vH3="${c[H3]}" -vH2="${c[H2]}" -vH0="${c[0]}" '
       # For starters, we search /proc/partitions for certain types of devices
@@ -1014,8 +1015,8 @@ IPADDR() {
   # The bracket here is like using parens to make a subshell -- allows to capture all stdout
   {
     # Header info ("❚" is used later by `column` to columnize the output)
-    echo "  Interface\tMAC Address\tMTU\tState\tIPv4 Address" >> $logFile
-    echo "  =========\t=================\t======\t=====\t==================" >> $logFile
+    echo -e "  Interface\tMAC Address\tMTU\tState\tIPv4 Address" >> $logFile
+    echo -e "  =========\t=================\t======\t=====\t==================" >> $logFile
     
     # For each interface ($i) found in ip addr output
     for i in ${ipdevs}; do
