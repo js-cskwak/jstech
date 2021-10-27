@@ -1014,8 +1014,8 @@ IPADDR() {
   # The bracket here is like using parens to make a subshell -- allows to capture all stdout
   {
     # Header info ("❚" is used later by `column` to columnize the output)
-    echo -e "  Interface\tMAC Address\t\tMTU\tState\tIPv4 Address" >> $logFile
-    echo -e "  =========\t=================\t======\t=====\t==================" >> $logFile
+    echo -e "  Interface    MAC Address       MTU     State  IPv4 Address" >> $logFile
+    echo -e "  =========   =================  ======  =====  ==================" >> $logFile
     
     # For each interface ($i) found in ip addr output
     for i in ${ipdevs}; do
@@ -1049,7 +1049,7 @@ IPADDR() {
           # So we need to set up a counter and do a loop
           n=0; while read ipaddr; do
             if [[ ${n} -eq 0 ]]; then
-              echo -e "  ${i}\t${slaveof[$i]}\t${mac[$i]}\t${mtu[$i]}\t${state[$i]}\t${ipaddr}" >> $logFile
+              echo -e "  ${i}   ${slaveof[$i]}   ${mac[$i]}   ${mtu[$i]}   ${state[$i]}   ${ipaddr}" >> $logFile
             else
               echo -e "   \t \t \t \t \t${ipaddr}" >> $logFile
             fi
@@ -1063,7 +1063,7 @@ IPADDR() {
         
         # Otherwise, print out all info with ipaddr set to "-"
         else
-          echo "  ${i}❚${slaveof[$i]}❚${mac[$i]}❚${mtu[$i]}❚${state[$i]}❚-" >> $logFile
+          echo "  ${i}   ${slaveof[$i]}   ${mac[$i]}   ${mtu[$i]}   ${state[$i]}-" >> $logFile
           # ... And Continue on to the next interface, i.e., skip looking for aliases
           continue
         fi
