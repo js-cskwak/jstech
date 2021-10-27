@@ -1086,7 +1086,6 @@ IPADDR() {
           }
           print H0
         }' >> $logFile
-  echo -e "\n"
 }
 
 
