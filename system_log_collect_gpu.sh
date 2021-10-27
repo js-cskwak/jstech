@@ -318,11 +318,16 @@ echo “smartctl -a /dev/sda” >> all_log_system.txt
 echo “smartctl -a /dev/sdb” >> all_log_system.txt
 echo “smartctl -a /dev/nvme0n1” >> all_log_system.txt
 echo "===========================================================================" >> all_log_system.txt
-smartctl -a /dev/nvme0n1 >> all_log_system.txt
-echo "===========================================================================" >> all_log_system.txt
+echo “smartctl -a /dev/sda” >> all_log_system.txt
 smartctl -a /dev/sda >> all_log_system.txt
+echo >> all_log_system.txt
 echo "===========================================================================" >> all_log_system.txt
+echo “smartctl -a /dev/sdb” >> all_log_system.txt
 smartctl -a /dev/sdb >> all_log_system.txt
+echo >> all_log_system.txt
+echo "===========================================================================" >> all_log_system.txt
+echo “smartctl -a /dev/nvme0n1” >> all_log_system.txt
+smartctl -a /dev/nvme0n1 >> all_log_system.txt
 sleep 1
 echo >> all_log_system.txt
 echo >> all_log_system.txt
