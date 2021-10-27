@@ -820,7 +820,7 @@ echo -e "  CPU:" >> $logFile
 echo -e "  Memory:" >> $logFile
   MemSize=`dmidecode -t memory | grep Size | head -1`
   MemSize=`gawk '{print $2}' <<<"$MemSize"`
-  echo -e "    Memory Size: $MemSize GB"
+  echo -e "    Memory Size: $MemSize GB" >> $logFile
   gawk 'BEGIN { RS="\nHandle" } /Physical Memory Array|Memory Device/' <<<"$dmidecode_input" |
     gawk -vH3="${c[H3]}" -vH2="${c[H2]}" -vH0="${c[0]}" -vH_IMP="${c[Imp]}" '
       /Size:/ {
@@ -846,7 +846,7 @@ echo -e "  Memory:" >> $logFile
         printf "    %sTotal:%s %d MiB (%.0f GiB)\n", H3, H0, SumRam, SumRam/1024
       }
     ' >> $logFile
-echo -e "\n"
+echo >> $logFile
 }
 
 OSINFO(){
@@ -887,7 +887,7 @@ echo -e "  Sys time:  $systime" >> $logFile
 echo -e "  Boot time:  $boottime" >> $logFile
 echo -e "  Time Zone:  $timezone" >> $logFile
 echo -e "  Uptime:  $uptime_input" >> $logFile
-echo -e "\n"
+echo >> $logFile
 }
 
 STORAGE(){
@@ -968,7 +968,7 @@ STORAGE(){
                              ' | sed "s,^,$XSOS_INDENT_H2,"  >> $logFile
     fi
 
-echo -e "\n"
+echo >> $logFile
 }
 
 LSPCI() {
@@ -981,14 +981,14 @@ LSPCI() {
   echo -e "  Ethernet: $cnt ea" >> $logFile
   gawk '/Ethernet/{print "    " $0}' <<<"$lspci_input"  >> $logFile
 
-  echo -e "$  RAID Card:"  >> $logFile
+  echo -e "  RAID Card:"  >> $logFile
   gawk '/RAID/{print "    " $0}' <<<"$lspci_input"  >> $logFile
 
   cnt=`gawk '/Fibre/' <<<"$lspci_input" | wc -l`
   echo -e "  Fibre Channel: $cnt ea" >> $logFile
   gawk '/Fibre/{print "    " $0}' <<<"$lspci_input" >> $logFile
 
-echo -e "\n"
+echo >> $logFile
 }
 
 IPADDR() {
@@ -1014,8 +1014,8 @@ IPADDR() {
   # The bracket here is like using parens to make a subshell -- allows to capture all stdout
   {
     # Header info ("❚" is used later by `column` to columnize the output)
-    echo "  Interface❚MAC Address❚MTU❚State❚IPv4 Address" >> $logFile
-    echo "  =========❚=================❚======❚=====❚==================" >> $logFile
+    echo "  Interface\tMAC Address\tMTU\tState\tIPv4 Address" >> $logFile
+    echo "  =========\t=================\t======\t=====\t==================" >> $logFile
     
     # For each interface ($i) found in ip addr output
     for i in ${ipdevs}; do
@@ -1049,9 +1049,9 @@ IPADDR() {
           # So we need to set up a counter and do a loop
           n=0; while read ipaddr; do
             if [[ ${n} -eq 0 ]]; then
-              echo "  ${i}❚${slaveof[$i]}❚${mac[$i]}❚${mtu[$i]}❚${state[$i]}❚${ipaddr}" >> $logFile
+              echo "  ${i}\t${slaveof[$i]}\t${mac[$i]}\t${mtu[$i]}\t${state[$i]}\t${ipaddr}" >> $logFile
             else
-              echo "   ❚ ❚ ❚ ❚ ❚${ipaddr}" >> $logFile
+              echo "   \t \t \t \t \t${ipaddr}" >> $logFile
             fi
             ((n++))
           done < <(gawk -v scrub="${XSOS_SCRUB_IP_HN}" "
