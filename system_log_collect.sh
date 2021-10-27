@@ -410,7 +410,6 @@ echo >> $logFile
 echo >> $logFile
 
 
-
 echo "===========================================================================" >> $logFile
 echo "(7) OS 버전 정보 확인(ubuntu)" >> $logFile
 echo "sudo cat /etc/os-release" >> $logFile
@@ -421,16 +420,16 @@ echo >> $logFile
 echo >> $logFile
 
 
-
-echo "===========================================================================" >> $logFile
-echo "(7-1) OS 버전 정보 확인(centos)" >> $logFile
-echo "sudo cat /etc/redhat-release" >> $logFile
-echo "===========================================================================" >> $logFile
-sudo cat /etc/redhat-release >> $logFile
-echo >> $logFile
-echo >> $logFile
-echo >> $logFile
-
+if [ -e /etc/redhat-release ]; then
+   echo "===========================================================================" >> $logFile
+   echo "(7-1) OS 버전 정보 확인(centos)" >> $logFile
+   echo "sudo cat /etc/redhat-release" >> $logFile
+   echo "===========================================================================" >> $logFile
+   sudo cat /etc/redhat-release >> $logFile
+   echo >> $logFile
+   echo >> $logFile
+   echo >> $logFile
+fi
 
 
 echo "===========================================================================" >> $logFile
@@ -732,27 +731,27 @@ if [ -e /root/anaconda-ks.cfg ]; then
    sleep 5
 fi
 
+if [ -e /usr/bin/nvidia-smi ]; then
+   echo "===========================================================================" >> $logFile
+   echo "(17) nvidia-smi " >> $logFile
+   echo "nvidia-smi" >> $logFile
+   echo "===========================================================================" >> $logFile
+   sudo nvidia-smi >> $logFile
+   echo >> $logFile
+   echo >> $logFile
+   echo >> $logFile
+   sleep 5
 
-echo "===========================================================================" >> $logFile
-echo "(17) nvidia-smi " >> $logFile
-echo "nvidia-smi" >> $logFile
-echo "===========================================================================" >> $logFile
-sudo nvidia-smi >> $logFile
-echo >> $logFile
-echo >> $logFile
-echo >> $logFile
-sleep 5
-
-echo "===========================================================================" >> $logFile
-echo "(17-1) GPU Card Model, Serial" >> $logFile
-echo "nvidia-smi --query-gpu=name,serial --format=csv" >> $logFile
-echo "===========================================================================" >> $logFile
-sudo nvidia-smi --query-gpu=name,serial --format=csv >> $logFile
-echo >> $logFile
-echo >> $logFile
-echo >> $logFile
-sleep 5
-
+   echo "===========================================================================" >> $logFile
+   echo "(17-1) GPU Card Model, Serial" >> $logFile
+   echo "nvidia-smi --query-gpu=name,serial --format=csv" >> $logFile
+   echo "===========================================================================" >> $logFile
+   sudo nvidia-smi --query-gpu=name,serial --format=csv >> $logFile
+   echo >> $logFile
+   echo >> $logFile
+   echo >> $logFile
+   sleep 5
+fi
 
 echo -e "=========================SYSTEM SUMMARY=================================" >> $logFile
 echo >> $logFile
@@ -1015,7 +1014,7 @@ IPADDR() {
   # The bracket here is like using parens to make a subshell -- allows to capture all stdout
   {
     # Header info ("❚" is used later by `column` to columnize the output)
-    echo -e "  Interface\tMAC Address\tMTU\tState\tIPv4 Address" >> $logFile
+    echo -e "  Interface\tMAC Address\t\tMTU\tState\tIPv4 Address" >> $logFile
     echo -e "  =========\t=================\t======\t=====\t==================" >> $logFile
     
     # For each interface ($i) found in ip addr output
@@ -1050,9 +1049,9 @@ IPADDR() {
           # So we need to set up a counter and do a loop
           n=0; while read ipaddr; do
             if [[ ${n} -eq 0 ]]; then
-              echo "  ${i}\t${slaveof[$i]}\t${mac[$i]}\t${mtu[$i]}\t${state[$i]}\t${ipaddr}" >> $logFile
+              echo -e "  ${i}\t${slaveof[$i]}\t${mac[$i]}\t${mtu[$i]}\t${state[$i]}\t${ipaddr}" >> $logFile
             else
-              echo "   \t \t \t \t \t${ipaddr}" >> $logFile
+              echo -e "   \t \t \t \t \t${ipaddr}" >> $logFile
             fi
             ((n++))
           done < <(gawk -v scrub="${XSOS_SCRUB_IP_HN}" "
