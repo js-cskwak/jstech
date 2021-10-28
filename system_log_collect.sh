@@ -339,7 +339,7 @@ else
    echo >> $logFile
 fi
 
-if [ -x /usr/bin/systool ]; then
+if [ -e /sys/class/fc_host ] && [ -x /usr/bin/systool ]; then
    echo "===========================================================================" >> $logFile
    echo "(5) LPe16002(FC HBA) 정보 확인(model,serial,fw ver)" >> $logFile
    echo "systool -a -v -c scsi_host host1 | egrep Class Device|model|version|proc_name|serialnum" >> $logFile
