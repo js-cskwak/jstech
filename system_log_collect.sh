@@ -255,7 +255,7 @@ echo >> $logFile
 echo >> $logFile
 
 # CRA4448 or AVAGO RAID 카드 설치 된 경우
-if [ -x /opt/MegaRAID/storcli/storcli64 ]; then
+if [ `lspci | grep MegaRAID | wc -l` -eq 1 ] && [ -x /opt/MegaRAID/storcli/storcli64 ]; then
 
    echo "===========================================================================" >> $logFile
    echo "(2) R/C(CRA4448) 구성정보 확인(간략히)" >> $logFile
@@ -292,7 +292,7 @@ if [ -x /opt/MegaRAID/storcli/storcli64 ]; then
    echo >> $logFile
 
 # CRA3338 카드 설치 된 경우
-elif [ -x /usr/local/bin/sas3ircu ]; then
+elif [ `lspci | grep SAS3008 | wc -l` -eq 1 ] && [ -x /usr/local/bin/sas3ircu ]; then
 
    echo "===========================================================================" >> $logFile
    echo "(3) R/C(CRA3338) 구성정보 확인(간략히)" >> $logFile
@@ -344,35 +344,16 @@ if [ -x /usr/bin/systool ]; then
    echo "(5) LPe16002(FC HBA) 정보 확인(model,serial,fw ver)" >> $logFile
    echo "systool -a -v -c scsi_host host1 | egrep Class Device|model|version|proc_name|serialnum" >> $logFile
    echo "===========================================================================" >> $logFile
-   sudo systool -a -v -c scsi_host host1 | egrep "Class Device|model|version|proc_name|serialnum" >> $logFile
-   sleep 1
-   echo >> $logFile
-   echo >> $logFile
-   echo >> $logFile
-fi
 
-if [ -e /sys/class/fc_host/host1/port_name ]; then
-   echo "===========================================================================" >> $logFile
-   echo "(5-1) LPe16002(FC HBA) WWPN(World wide Port Name) 정보 확인(port1)" >> $logFile
-   echo "cat /sys/class/fc_host/host1/port_name" >> $logFile
-   echo "===========================================================================" >> $logFile
-   cat /sys/class/fc_host/host1/port_name >> $logFile
-   sleep 1
-   echo >> $logFile
-   echo >> $logFile
-   echo >> $logFile
-fi
-
-if [ -e /sys/class/fc_host/host2/port_name ]; then
-   echo "===========================================================================" >> $logFile
-   echo "(5-2) LPe16002(FC HBA) WWPN(World wide Port Name) 정보 확인(port2)" >> $logFile
-   echo "cat /sys/class/fc_host/host2/port_name" >> $logFile
-   echo "===========================================================================" >> $logFile
-   cat /sys/class/fc_host/host2/port_name >> $logFile
-   sleep 1
-   echo >> $logFile
-   echo >> $logFile
-   echo >> $logFile
+   fc_list=`ls /sys/class/fc_host/`
+   for entry in $fc_list
+   do
+      echo -e "===== $entry ======="
+      systool -a -v -c scsi_host $entry | egrep "Class Device|model|version|proc_name|serialnum" >> $logFile
+      echo -n "Word Wide Port Name : "
+      cat /sys/class/fc_host/$entry/port_name >> $ logFile
+      sleep 2
+   done
 fi
 
 echo "===========================================================================" >> $logFile
@@ -982,7 +963,7 @@ LSPCI() {
   gawk '/Ethernet/{print "    " $0}' <<<"$lspci_input"  >> $logFile
 
   echo -e "  RAID Card:"  >> $logFile
-  gawk '/RAID/{print "    " $0}' <<<"$lspci_input"  >> $logFile
+  gawk '/LSI/{print "    " $0}' <<<"$lspci_input"  >> $logFile
 
   cnt=`gawk '/Fibre/' <<<"$lspci_input" | wc -l`
   echo -e "  Fibre Channel: $cnt ea" >> $logFile
