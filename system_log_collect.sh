@@ -1030,7 +1030,7 @@ IPADDR() {
           # So we need to set up a counter and do a loop
           n=0; while read ipaddr; do
             if [[ ${n} -eq 0 ]]; then
-              echo -e "  ${i}      ${mac[$i]}      ${mtu[$i]}      ${state[$i]}      ${ipaddr}" >> $logFile
+              echo -e "  ${i}      ${mac[$i]}      ${mtu[$i]}      ${state[$i]}    ${ipaddr}" >> $logFile
             else
               echo -e "   \t \t \t \t \t${ipaddr}" >> $logFile
             fi
@@ -1044,7 +1044,8 @@ IPADDR() {
         
         # Otherwise, print out all info with ipaddr set to "-"
         else
-          echo "  ${i}   ${mac[$i]}   ${mtu[$i]}   ${state[$i]}   -" >> $logFile
+          #echo "  ${i}   ${mac[$i]}   ${mtu[$i]}   ${state[$i]}   -" >> $logFile
+          echo -e "  ${i}      ${mac[$i]}      ${mtu[$i]}      ${state[$i]}   -  " >> $logFile
           # ... And Continue on to the next interface, i.e., skip looking for aliases
           continue
         fi
