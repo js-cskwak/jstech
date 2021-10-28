@@ -348,10 +348,10 @@ if [ -x /usr/bin/systool ]; then
    fc_list=`ls /sys/class/fc_host/`
    for entry in $fc_list
    do
-      echo -e "===== $entry ======="
+      echo -e "===== $entry =======" >> $logFile
       systool -a -v -c scsi_host $entry | egrep "Class Device|model|version|proc_name|serialnum" >> $logFile
-      echo -n "Word Wide Port Name : "
-      cat /sys/class/fc_host/$entry/port_name >> $ logFile
+      echo -n "Word Wide Port Name : " >> $logFile
+      cat /sys/class/fc_host/$entry/port_name >> $logFile
       sleep 2
    done
 fi
@@ -1030,7 +1030,7 @@ IPADDR() {
           # So we need to set up a counter and do a loop
           n=0; while read ipaddr; do
             if [[ ${n} -eq 0 ]]; then
-              echo -e "  ${i}   ${mac[$i]}   ${mtu[$i]}   ${state[$i]}   ${ipaddr}" >> $logFile
+              echo -e "  ${i}      ${mac[$i]}      ${mtu[$i]}      ${state[$i]}      ${ipaddr}" >> $logFile
             else
               echo -e "   \t \t \t \t \t${ipaddr}" >> $logFile
             fi
