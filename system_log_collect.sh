@@ -9,8 +9,8 @@
 # - ipmitool
 #########################
 
-model=`dmidecode -t system | grep "Product Name" | cut -d" " -f 3`
-serial=`dmidecode -t system | grep "Serial Number" | cut -d" " -f 3`
+model=`ipmitool fru print | grep "Product Name" | head -1 | cut -c 26-`
+serial=`ipmitool fru print | grep "Product Serial" | head -1 | cut -c 26-`
 logFile="all_log_system_${model}_${serial}.txt"
 
 sudo rm -rf $logFile
@@ -799,9 +799,10 @@ echo -e "  CPU:" >> $logFile
     ' >> $logFile
 
 echo -e "  Memory:" >> $logFile
-  MemSize=`dmidecode -t memory | grep Size | head -1`
-  MemSize=`gawk '{print $2}' <<<"$MemSize"`
-  echo -e "    Memory Size: $MemSize GB" >> $logFile
+  #MemSize=`dmidecode -t memory | grep Size | head -1`
+  #MemSize=`gawk '{print $2}' <<<"$MemSize"`
+  MemSize=`dmidecode -t memory | grep Size | head -1 | cut -c 2-`
+  echo -e "    Memory $MemSize" >> $logFile
   gawk 'BEGIN { RS="\nHandle" } /Physical Memory Array|Memory Device/' <<<"$dmidecode_input" |
     gawk -vH3="${c[H3]}" -vH2="${c[H2]}" -vH0="${c[0]}" -vH_IMP="${c[Imp]}" '
       /Size:/ {
