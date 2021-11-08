@@ -531,7 +531,7 @@ echo -e "\n"
 
 echo "Start to collecting log. Please wait a few miutes."
 echo -e "\n"
-echo -ne "Progress : [####                                    ] 5%\r"
+echo -ne "Progress : [###                                     ] 5%\r"
 
 echo "===========================================================================" >> $logFile
 echo " `date` " >> $logFile
@@ -541,79 +541,87 @@ echo >> $logFile
 echo >> $logFile
 
 
-echo -ne "Progress : [#######                                 ] 7%\r"
+echo -ne "Progress : [####                                    ] 6%\r"
+sleep 1
+echo -ne "Progress : [####                                    ] 7%\r"
 
 echo "===========================================================================" >> $logFile
 echo "(1) lshw" >> $logFile
 echo "sudo lshw" >> $logFile
 echo "===========================================================================" >> $logFile
 sudo lshw >> $logFile 2>&1
+echo -ne "Progress : [#####                                   ] 8%\r"
 sleep 1
 echo >> $logFile
 echo >> $logFile
 echo >> $logFile
 
-echo -ne "Progress : [#######                                 ] 9%\r"
+echo -ne "Progress : [#####                                   ] 9%\r"
 
 echo "===========================================================================" >> $logFile
 echo "(1-1) lshw -class system" >> $logFile
 echo "sudo lshw -class system" >> $logFile
 echo "===========================================================================" >> $logFile
 sudo lshw -class system >> $logFile 2>&1
+echo -ne "Progress : [######                                  ] 10%\r"
 sleep 1
 echo >> $logFile
 echo >> $logFile
 echo >> $logFile
 
-echo -ne "Progress : [#########                               ] 11%\r"
+echo -ne "Progress : [######                                  ] 11%\r"
 
 echo "===========================================================================" >> $logFile
 echo "(1-2) lshw -class bridge" >> $logFile
 echo "sudo lshw -class bridge" >> $logFile
 echo "===========================================================================" >> $logFile
 sudo lshw -class bridge >> $logFile 2>&1
+echo -ne "Progress : [######                                  ] 12%\r"
 sleep 1
 echo >> $logFile
 echo >> $logFile
 echo >> $logFile
 
-echo -ne "Progress : [#########                               ] 13%\r"
+echo -ne "Progress : [######                                  ] 13%\r"
 
 echo "===========================================================================" >> $logFile
 echo "(1-3) lshw -class memory" >> $logFile
 echo "sudo lshw -class memory" >> $logFile
 echo "===========================================================================" >> $logFile
 sudo lshw -class memory >> $logFile 2>&1
+echo -ne "Progress : [######                                  ] 14%\r"
 sleep 1
 echo >> $logFile
 echo >> $logFile
 echo >> $logFile
 
-echo -ne "Progress : [##########                              ] 15%\r"
+echo -ne "Progress : [#######                                 ] 15%\r"
 
 echo "===========================================================================" >> $logFile
 echo "(1-4) lshw -class processor" >> $logFile
 echo "sudo lshw -class processor" >> $logFile
 echo "===========================================================================" >> $logFile
 sudo lshw -class processor >> $logFile 2>&1
+echo -ne "Progress : [#######                                 ] 16%\r"
 sleep 1
 echo >> $logFile
 echo >> $logFile
 echo >> $logFile
 
-echo -ne "Progress : [##########                              ] 17%\r"
+echo -ne "Progress : [#######                                 ] 17%\r"
 
 echo "===========================================================================" >> $logFile
 echo "(1-5) lshw -class address" >> $logFile
 echo "sudo lshw -class address" >> $logFile
 echo "===========================================================================" >> $logFile
 sudo lshw -class address >> $logFile 2>&1
+echo -ne "Progress : [#######                                 ] 18%\r"
 sleep 1
 echo >> $logFile
 echo >> $logFile
 echo >> $logFile
 
-echo -ne "Progress : [##########                              ] 19%\r"
+echo -ne "Progress : [########                                ] 19%\r"
 
 echo "===========================================================================" >> $logFile
 echo "(1-6) lshw -class storage" >> $logFile
@@ -625,115 +633,124 @@ echo >> $logFile
 echo >> $logFile
 echo >> $logFile
 
-echo -ne "Progress : [###########                             ] 20%\r"
+echo -ne "Progress : [########                                ] 20%\r"
 
 echo "===========================================================================" >> $logFile
 echo "(1-7) lshw -class disk" >> $logFile
 echo "sudo lshw -class disk" >> $logFile
 echo "===========================================================================" >> $logFile
 sudo lshw -class disk >> $logFile 2>&1
+echo -ne "Progress : [########                                ] 21%\r"
 sleep 1
 echo >> $logFile
 echo >> $logFile
 echo >> $logFile
 
-echo -ne "Progress : [############                            ] 22%\r"
+echo -ne "Progress : [#########                               ] 22%\r"
 
 echo "===========================================================================" >> $logFile
 echo "(1-8) lshw -class tape" >> $logFile
 echo "sudo lshw -class tape" >> $logFile
 echo "===========================================================================" >> $logFile
 sudo lshw -class tape >> $logFile 2>&1
+echo -ne "Progress : [#########                               ] 23%\r"
 sleep 1
 echo >> $logFile
 echo >> $logFile
 echo >> $logFile
 
-echo -ne "Progress : [############                            ] 24%\r"
+echo -ne "Progress : [##########                              ] 24%\r"
 
 echo "===========================================================================" >> $logFile
 echo "(1-9) lshw -class bus" >> $logFile
 echo "sudo lshw -class bus" >> $logFile
 echo "===========================================================================" >> $logFile
 sudo lshw -class bus >> $logFile 2>&1
+echo -ne "Progress : [##########                              ] 25%\r"
 sleep 1
 echo >> $logFile
 echo >> $logFile
 echo >> $logFile
 
-echo -ne "Progress : [#############                           ] 26%\r"
+echo -ne "Progress : [##########                              ] 26%\r"
 
 echo "===========================================================================" >> $logFile
 echo "(1-10) lshw -class network" >> $logFile
 echo "sudo lshw -class network" >> $logFile
 echo "===========================================================================" >> $logFile
 sudo lshw -class network >> $logFile 2>&1
+echo -ne "Progress : [###########                             ] 27%\r"
 sleep 1
 echo >> $logFile
 echo >> $logFile
 echo >> $logFile
 
-echo -ne "Progress : [#############                           ] 28%\r"
+echo -ne "Progress : [###########                             ] 28%\r"
 
 echo "===========================================================================" >> $logFile
 echo "(1-11) lshw -class display" >> $logFile
 echo "sudo lshw -class display" >> $logFile
 echo "===========================================================================" >> $logFile
 sudo lshw -class display >> $logFile 2>&1
+echo -ne "Progress : [###########                             ] 29%\r"
 sleep 1
 echo >> $logFile
 echo >> $logFile
 echo >> $logFile
 
-echo -ne "Progress : [##############                          ] 30%\r"
+echo -ne "Progress : [############                            ] 30%\r"
 
 echo "===========================================================================" >> $logFile
 echo "(1-12) lshw -class input" >> $logFile
 echo "sudo lshw -class input" >> $logFile
 echo "===========================================================================" >> $logFile
 sudo lshw -class input >> $logFile 2>&1
+echo -ne "Progress : [############                            ] 31%\r"
 sleep 1
 echo >> $logFile
 echo >> $logFile
 echo >> $logFile
 
-echo -ne "Progress : [##############                          ] 32%\r"
+echo -ne "Progress : [############                            ] 32%\r"
 
 echo "===========================================================================" >> $logFile
 echo "(1-13) lshw -class printer" >> $logFile
 echo "sudo lshw -class printer" >> $logFile
 echo "===========================================================================" >> $logFile
 sudo lshw -class printer >> $logFile 2>&1
+echo -ne "Progress : [#############                           ] 33%\r"
 sleep 1
 echo >> $logFile
 echo >> $logFile
 echo >> $logFile
 
-echo -ne "Progress : [###############                         ] 34%\r"
+echo -ne "Progress : [#############                           ] 34%\r"
 
 echo "===========================================================================" >> $logFile
 echo "(1-14) lshw -class multimedia" >> $logFile
 echo "sudo lshw -class multimedia" >> $logFile
 echo "===========================================================================" >> $logFile
 sudo lshw -class multimedia >> $logFile 2>&1
+echo -ne "Progress : [#############                           ] 35%\r"
 sleep 1
 echo >> $logFile
 echo >> $logFile
 echo >> $logFile
 
-echo -ne "Progress : [###############                         ] 36%\r"
+echo -ne "Progress : [##############                          ] 36%\r"
 
 echo "===========================================================================" >> $logFile
 echo "(1-15) lshw -class communication" >> $logFile
 echo "sudo lshw -class communication" >> $logFile
 echo "===========================================================================" >> $logFile
 sudo lshw -class communication >> $logFile 2>&1
+echo -ne "Progress : [##############                          ] 37%\r"
 sleep 1
 echo >> $logFile
 echo >> $logFile
 echo >> $logFile
 
-echo -ne "Progress : [################                        ] 38%\r"
+echo -ne "Progress : [##############                          ] 38%\r"
 
 echo "===========================================================================" >> $logFile
 echo "(1-16) lshw -class power" >> $logFile
@@ -745,25 +762,27 @@ echo >> $logFile
 echo >> $logFile
 echo >> $logFile
 
-echo -ne "Progress : [################                        ] 39%\r"
+echo -ne "Progress : [###############                         ] 39%\r"
 
 echo "===========================================================================" >> $logFile
 echo "(1-17) lshw -class volume" >> $logFile
 echo "sudo lshw -class volume" >> $logFile
 echo "===========================================================================" >> $logFile
 sudo lshw -class volume >> $logFile 2>&1
+echo -ne "Progress : [###############                         ] 40%\r"
 sleep 1
 echo >> $logFile
 echo >> $logFile
 echo >> $logFile
 
-echo -ne "Progress : [#################                       ] 41%\r"
+echo -ne "Progress : [################                        ] 41%\r"
 
 echo "===========================================================================" >> $logFile
 echo "(1-18) lshw -class generic" >> $logFile
 echo "sudo lshw -class generic" >> $logFile
 echo "===========================================================================" >> $logFile
 sudo lshw -class generic >> $logFile 2>&1
+echo -ne "Progress : [#################                       ] 42%\r"
 sleep 1
 echo >> $logFile
 echo >> $logFile
@@ -852,6 +871,12 @@ else
    echo >> $logFile
 fi
 
+echo -ne "Progress : [#################                       ] 44%\r"
+sleep 1
+echo -ne "Progress : [#################                       ] 45%\r"
+sleep 1
+echo -ne "Progress : [##################                      ] 46%\r"
+sleep 1
 echo -ne "Progress : [##################                      ] 47%\r"
 
 if [ -e /sys/class/fc_host ] && [ -x /usr/bin/systool ]; then
@@ -880,6 +905,7 @@ echo "dmidecode -t slot | grep Type" >> $logFile
 echo "===========================================================================" >> $logFile
 sudo dmidecode -t slot | grep Type | wc -l >> $logFile 2>&1
 sudo dmidecode -t slot | grep Type >> $logFile 2>&1
+echo -ne "Progress : [####################                    ] 49%\r"
 sleep 1
 echo >> $logFile
 echo >> $logFile
@@ -892,6 +918,7 @@ echo "(6-1) 사용 가능한 PCI Slot 확인" >> $logFile
 echo "dmidecode -t slot | grep -i "available" | wc -l" >> $logFile
 echo "===========================================================================" >> $logFile
 sudo dmidecode -t slot | grep -i "available" | wc -l >> $logFile 2>&1
+echo -ne "Progress : [####################                    ] 51%\r"
 sleep 1
 echo >> $logFile
 echo >> $logFile
@@ -904,6 +931,7 @@ echo "(6-2) 현재 사용중인 PCI Slot과 해당 BUS 정보 확인" >> $logFil
 echo "dmidecode -t slot | grep -i "in use" -B2 -A5" >> $logFile
 echo "===========================================================================" >> $logFile
 sudo dmidecode -t slot | grep -i "in use" -B2 -A5 >> $logFile 2>&1
+echo -ne "Progress : [#####################                   ] 53%\r"
 sleep 1
 echo >> $logFile
 echo >> $logFile
@@ -916,6 +944,7 @@ echo "(7) OS 버전 정보 확인(ubuntu)" >> $logFile
 echo "sudo cat /etc/os-release" >> $logFile
 echo "===========================================================================" >> $logFile
 sudo cat /etc/os-release >> $logFile 2>&1
+echo -ne "Progress : [#####################                   ] 55%\r"
 sleep 1
 echo >> $logFile
 echo >> $logFile
@@ -941,6 +970,7 @@ echo "(8) Kernel버전 및 Architecture 정보 확인" >> $logFile
 echo "sudo uname -a" >> $logFile
 echo "===========================================================================" >> $logFile
 sudo uname -a >> $logFile 2>&1
+echo -ne "Progress : [########################                ] 58%\r"
 sleep 1
 echo >> $logFile
 echo >> $logFile
@@ -965,6 +995,7 @@ echo "(10) List block devices" >> $logFile
 echo "sudo lsblk" >> $logFile
 echo "===========================================================================" >> $logFile
 sudo lsblk >> $logFile 2>&1
+echo -ne "Progress : [##########################              ] 61%\r"
 sleep 1
 echo >> $logFile
 echo >> $logFile
@@ -977,6 +1008,7 @@ echo "(10-1) Partiton 정보 확인" >> $logFile
 echo "sudo df -h" >> $logFile
 echo "===========================================================================" >> $logFile
 sudo df -h >> $logFile 2>&1
+echo -ne "Progress : [###########################             ] 63%\r"
 sleep 1
 echo >> $logFile
 echo >> $logFile
@@ -989,18 +1021,20 @@ echo "(10-2) fdisk" >> $logFile
 echo "sudo fdisk -l" >> $logFile
 echo "===========================================================================" >> $logFile
 sudo fdisk -l >> $logFile 2>&1
+echo -ne "Progress : [#############################           ] 65%\r"
 sleep 1
 echo >> $logFile
 echo >> $logFile
 echo >> $logFile
 
-echo -ne "Progress : [############################            ] 66%\r"
+echo -ne "Progress : [##############################          ] 66%\r"
 
 echo "===========================================================================" >> $logFile
 echo "(10-3) mdstat" >> $logFile
 echo "sudo cat /proc/mdstat" >> $logFile
 echo "===========================================================================" >> $logFile
 sudo cat /proc/mdstat >> $logFile 2>&1
+echo -ne "Progress : [###############################         ] 67%\r"
 sleep 1
 echo >> $logFile
 echo >> $logFile
@@ -1013,6 +1047,7 @@ echo "(11) ip addr" >> $logFile
 echo "sudo ip addr" >> $logFile
 echo "===========================================================================" >> $logFile
 sudo ip addr >> $logFile 2>&1
+echo -ne "Progress : [#################################       ] 69%\r"
 sleep 1
 echo >> $logFile
 echo >> $logFile
@@ -1025,6 +1060,7 @@ echo "(12) ipmitool lan print" >> $logFile
 echo "sudo ipmitool lan print" >> $logFile
 echo "===========================================================================" >> $logFile
 sudo ipmitool lan print >> $logFile 2>&1
+echo -ne "Progress : [#################################       ] 71%\r"
 sleep 1
 echo >> $logFile
 echo >> $logFile
@@ -1061,6 +1097,7 @@ echo "(12-3) iManagement Controller Channel 정보 확인" >> $logFile
 echo "sudo ipmitool -I open channel info 1" >> $logFile
 echo "===========================================================================" >> $logFile
 sudo ipmitool -I open channel info 1 >> $logFile 2>&1
+echo -ne "Progress : [##################################      ] 75%\r"
 sleep 1
 echo >> $logFile
 echo >> $logFile
@@ -1073,6 +1110,7 @@ echo "(12-4) ipmitool" >> $logFile
 echo "sudo ipmitool sdr" >> $logFile
 echo "===========================================================================" >> $logFile
 sudo ipmitool sdr >> $logFile 2>&1
+echo -ne "Progress : [##################################      ] 77%\r"
 sleep 1
 echo >> $logFile
 echo >> $logFile
@@ -1085,6 +1123,7 @@ echo "(12-5) ipmitool sensor 정보를 더 자세히 확인(HDD fault 등)" >> $
 echo "sudo ipmitool sdr elist" >> $logFile
 echo "===========================================================================" >> $logFile
 sudo ipmitool sdr elist >> $logFile 2>&1
+echo -ne "Progress : [###################################     ] 80%\r"
 sleep 1
 echo >> $logFile
 echo >> $logFile
@@ -1097,6 +1136,7 @@ echo "(12-6) ipmitool sensor 정보를 더 자세히 확인(HDD fault 등)" >> $
 echo "sudo ipmitool sdr -v" >> $logFile
 echo "===========================================================================" >> $logFile
 sudo ipmitool sdr -v >> $logFile 2>&1
+echo -ne "Progress : [###################################     ] 82%\r"
 sleep 1
 echo >> $logFile
 echo >> $logFile
@@ -1121,6 +1161,7 @@ echo "(12-8) ipmitool -I open fru" >> $logFile
 echo "sudo ipmitool -I open fru" >> $logFile
 echo "===========================================================================" >> $logFile
 sudo ipmitool -I open fru >> $logFile 2>&1
+echo -ne "Progress : [####################################    ] 85%\r"
 sleep 1
 echo >> $logFile
 echo >> $logFile
@@ -1133,6 +1174,7 @@ echo "(12-9) ipmitool -I open sel list" >> $logFile
 echo "sudo ipmitool -I open sel list" >> $logFile
 echo "===========================================================================" >> $logFile
 sudo ipmitool -I open sel list >> $logFile 2>&1
+echo -ne "Progress : [####################################    ] 87%\r"
 sleep 1
 echo >> $logFile
 echo >> $logFile
@@ -1145,6 +1187,7 @@ echo "(12-10) ipmitool -I open lan print" >> $logFile
 echo "sudo ipmitool -I open lan print" >> $logFile
 echo "===========================================================================" >> $logFile
 sudo ipmitool -I open lan print >> $logFile 2>&1
+echo -ne "Progress : [#####################################   ] 89%\r"
 sleep 1
 echo >> $logFile
 echo >> $logFile
@@ -1293,5 +1336,7 @@ echo "==========================================================================
 
 
 echo -ne "Progress : [########################################] 100%\r"
+sleep 2
 echo -e "\n"
 echo -e "\nFinished.... \nPlease refer to ${logFile} file for detail."
+sleep 2
