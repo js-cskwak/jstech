@@ -526,18 +526,17 @@ IPADDR
 
 prog() {
    sleep .5
-   local w=70 p=$1;  shift
+   local w=60 p=$1;  shift
    # create a string of spaces, then change them to dots
-   printf -v dots "%*s" "$(( $p*$w/100 ))" ""; dots=${dots// /#};
+   printf -v dots "%*s" "$(( $p*$w/100 ))" ""; dots=${dots// /\#};
    # print those dots on a fixed-width space plus the percentage etc. 
-   printf "\r\e[K|%-*s| %3d %% %s" "$w" "$dots" "$p" "$*"; 
+   printf "\r\e[KProcessing...|%-*s| %3d %% %s" "$w" "$dots" "$p" "$*"; 
 }
 
 echo -e "\n"
 echo -e "${c[H3]}========== SYSTEM SUMMARY END =============${c[0]}"
-echo -e "\n"
 
-echo "Start to collecting log. Please wait a few miutes."
+echo -e "\nStart to collecting log. Please wait a few miutes."
 
 echo "===========================================================================" >> $logFile
 echo " `date` " >> $logFile
@@ -1290,6 +1289,7 @@ echo "==========================================================================
 echo " `date` " >> $logFile
 echo "===========================================================================" >> $logFile
 
-sleep 1
-echo -e "\nFinished.... \nPlease refer to ${logFile} file for detail."
-sleep 1
+sleep 2
+echo -e "\nFinish...."
+sleep 2
+echo -e "\nPlease refer to ${logFile} file for detail."
