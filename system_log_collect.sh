@@ -777,7 +777,7 @@ if [ `lspci | grep MegaRAID | wc -l` -eq 1 ] && [ -x /opt/MegaRAID/storcli/storc
    echo "(2) R/C(CRA4448) 구성정보 확인(간략히)" >> $logFile
    echo "/opt/MegaRAID/storcli/storcli64 /c0 show" >> $logFile
    echo "===========================================================================" >> $logFile
-   /opt/MegaRAID/storcli/storcli64 /c0 show >> $logFile 2>&1
+   /opt/MegaRAID/storcli/storcli64 /c0 show nolog >> $logFile 2>&1
    prog 37
    echo >> $logFile
    echo >> $logFile
@@ -787,7 +787,7 @@ if [ `lspci | grep MegaRAID | wc -l` -eq 1 ] && [ -x /opt/MegaRAID/storcli/storc
    echo "(2-1) R/C(CRA4448) 구성정보 확인(자세히)" >> $logFile
    echo "/opt/MegaRAID/storcli/storcli64 /c0 /eall /sall show" >> $logFile
    echo "===========================================================================" >> $logFile
-   /opt/MegaRAID/storcli/storcli64 /c0 /eall /sall show >> $logFile 2>&1
+   /opt/MegaRAID/storcli/storcli64 /c0 /eall /sall show nolog >> $logFile 2>&1
    prog 38
    echo >> $logFile
    echo >> $logFile
@@ -797,7 +797,7 @@ if [ `lspci | grep MegaRAID | wc -l` -eq 1 ] && [ -x /opt/MegaRAID/storcli/storc
    echo "(2-2) R/C(CRA4448) 구성정보 확인(자세히)" >> $logFile
    echo "/opt/MegaRAID/storcli/storcli64 /c0 /eall /sall show all" >> $logFile
    echo "===========================================================================" >> $logFile
-   /opt/MegaRAID/storcli/storcli64 /c0 /eall /sall show all >> $logFile 2>&1
+   /opt/MegaRAID/storcli/storcli64 /c0 /eall /sall show all nolog >> $logFile 2>&1
    prog 39
    echo >> $logFile
    echo >> $logFile
