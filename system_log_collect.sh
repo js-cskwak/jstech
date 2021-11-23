@@ -1260,8 +1260,7 @@ fi
 
 prog 99
 
-
-if [ -e /usr/bin/nvidia-smi ]; then
+if [ `lspci | grep NVIDIA | wc -l` -ge 1 ] && [ -e /usr/bin/nvidia-smi ]; then
    echo "===========================================================================" >> $logFile
    echo "(17) nvidia-smi " >> $logFile
    echo "nvidia-smi" >> $logFile
