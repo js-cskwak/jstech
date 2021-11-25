@@ -3,9 +3,15 @@
 # Run in Ubuntu (x86, arm)
 # 기가바이트 및 범용 시스템 로그 수집
 
-model=`ipmitool fru print | grep "Product Name" | head -1 | cut -c 26-`
-serial=`ipmitool fru print | grep "Product Serial" | head -1 | cut -c 26-`
-logFile="all_log_system_${model}_${serial}.txt"
+manufacturer=`ipmitool fru print | grep "Product Manufacturer" | head -1 | cut -c 26-`
+logFile="all_log_system.txt"
+
+if [ $manufacturer = "GIGABYTE" ] 
+then
+   model=`ipmitool fru print | grep "Product Name" | head -1 | cut -c 26-`
+   serial=`ipmitool fru print | grep "Product Serial" | head -1 | cut -c 26-`
+   logFile="all_log_system_${model}_${serial}.txt"
+fi
 
 sudo rm -rf $logFile
 
