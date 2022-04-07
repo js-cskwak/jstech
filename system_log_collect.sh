@@ -407,6 +407,7 @@ LSPCI() {
   
   lspci_input=$(lspci)
   
+  raid_cnt=`gawk '/LSI/' <<<"$lspci_input" | wc -l`
   net_cnt=`gawk '/Ethernet/' <<<"$lspci_input" | wc -l`
   fc_cnt=`gawk '/Fibre/' <<<"$lspci_input" | wc -l`
 
@@ -414,7 +415,7 @@ LSPCI() {
 
   echo -e "${c[H1]}LSPCI${c[0]}"
 
-  echo -e "${c[H2]}  RAID Card:${c[0]}"
+  echo -e "${c[H2]}  RAID Card: ${raid_cnt} ea ${c[0]}"
   gawk '/LSI/{print "    " $0}' <<<"$lspci_input"
   
   echo -e "${c[H2]}  Ethernet: ${net_cnt} ea ${c[0]}"
@@ -427,7 +428,7 @@ LSPCI() {
 # Write log file
   echo -e "LSPCI" >> $logFile
 
-  echo -e "  RAID Card:"  >> $logFile
+  echo -e "  RAID Card: $raid_cnt ea"  >> $logFile
   gawk '/LSI/{print "    " $0}' <<<"$lspci_input"  >> $logFile
 
   echo -e "  Ethernet: $net_cnt ea" >> $logFile
