@@ -67,8 +67,8 @@ echo -e "${c[H2]}  CPU:${c[0]}"
       /Status:/       { SumSockets ++; if ($2 ~ /Populated/) PopulatedSockets ++ }
       /Core Count:/   { SumCores   += $2; CoresPerCpu = $2 }
       /Thread Count:/ { SumThreads += $2; ThreadsPerCpu = $2 }
-      /Manufacturer:/ { if ($2 ~ /^ *$|Not/)         next; Mfr      = $2; gsub(/  */, " ", Mfr) }
-      /Family:/       { if ($2 ~ /^ *$|Other|<OUT/)   next; Family   = $2; gsub(/  */, " ", Family) }
+      /Manufacturer:/ { if ($2 ~ /^ *$|Not|Unknown/)         next; Mfr      = $2; gsub(/  */, " ", Mfr) }
+      /Family:/       { if ($2 ~ /^ *$|Other|<OUT|Unknown/)   next; Family   = $2; gsub(/  */, " ", Family) }
       /Current Speed:/{ if ($2 ~ /^ *$|Unknown/) next; CpuFreq  = $2; gsub(/  */, " ", CpuFreq) }
       /Version:/      { if ($2 ~ /^ *$|Not/)         next; Version  = $2; gsub(/  */, " ", Version) }
       END {
@@ -147,8 +147,8 @@ echo -e "  CPU:" >> $logFile
       /Status:/       { SumSockets ++; if ($2 ~ /Populated/) PopulatedSockets ++ }
       /Core Count:/   { SumCores   += $2; CoresPerCpu = $2 }
       /Thread Count:/ { SumThreads += $2; ThreadsPerCpu = $2 }
-      /Manufacturer:/ { if ($2 ~ /^ *$|Not/)         next; Mfr      = $2; gsub(/  */, " ", Mfr) }
-      /Family:/       { if ($2 ~ /^ *$|Other|<OUT/)   next; Family   = $2; gsub(/  */, " ", Family) }
+      /Manufacturer:/ { if ($2 ~ /^ *$|Not|Unknown/)         next; Mfr      = $2; gsub(/  */, " ", Mfr) }
+      /Family:/       { if ($2 ~ /^ *$|Other|<OUT|Unknown/)   next; Family   = $2; gsub(/  */, " ", Family) }
       /Current Speed:/{ if ($2 ~ /^ *$|Unknown/) next; CpuFreq  = $2; gsub(/  */, " ", CpuFreq) }
       /Version:/      { if ($2 ~ /^ *$|Not/)         next; Version  = $2; gsub(/  */, " ", Version) }
       END {
