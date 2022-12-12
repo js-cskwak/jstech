@@ -847,10 +847,16 @@ else
    echo "===========================================================================" >> $logFile
    echo “smartctl -a /dev/sda” >> $logFile
    smartctl -a /dev/sda >> $logFile 2>&1
-   prog 37
    echo "===========================================================================" >> $logFile
    echo “smartctl -a /dev/sdb” >> $logFile
    smartctl -a /dev/sdb >> $logFile 2>&1
+   echo "===========================================================================" >> $logFile
+   prog 37
+   echo “smartctl -a /dev/sdc” >> $logFile
+   smartctl -a /dev/sdc >> $logFile 2>&1
+   echo "===========================================================================" >> $logFile
+   echo “smartctl -a /dev/sdd” >> $logFile
+   smartctl -a /dev/sdd >> $logFile 2>&1
    prog 38
    echo "===========================================================================" >> $logFile
    echo “smartctl -a /dev/nvme0n1” >> $logFile
