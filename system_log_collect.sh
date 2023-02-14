@@ -778,7 +778,7 @@ echo >> $logFile
 prog 36
 
 # CRA4448 or AVAGO RAID 카드 설치 된 경우
-if [ `lspci | grep MegaRAID | wc -l` -eq 1 ] && [ -x /opt/MegaRAID/storcli/storcli64 ]; then
+# if [ `lspci | grep MegaRAID | wc -l` -eq 1 ] && [ -x /opt/MegaRAID/storcli/storcli64 ]; then
 
    echo "===========================================================================" >> $logFile
    echo "(2) R/C(CRA4448) 구성정보 확인(간략히)" >> $logFile
@@ -811,7 +811,7 @@ if [ `lspci | grep MegaRAID | wc -l` -eq 1 ] && [ -x /opt/MegaRAID/storcli/storc
    echo >> $logFile
 
 # CRA3338 카드 설치 된 경우
-elif [ `lspci | grep SAS3008 | wc -l` -eq 1 ] && [ -x /usr/local/bin/sas3ircu ]; then
+# elif [ `lspci | grep SAS3008 | wc -l` -eq 1 ] && [ -x /usr/local/bin/sas3ircu ]; then
 
    echo "===========================================================================" >> $logFile
    echo "(3) R/C(CRA3338) 구성정보 확인(간략히)" >> $logFile
@@ -835,10 +835,10 @@ elif [ `lspci | grep SAS3008 | wc -l` -eq 1 ] && [ -x /usr/local/bin/sas3ircu ];
    prog 39
 
 # RAID 카드 없는 경우는 smartctl 정보 수집
-else 
+# else 
    echo >> $logFile
    echo >> $logFile
-   echo "RAID controller is not installed" >> $logFile
+#  echo "RAID controller is not installed" >> $logFile
    echo >> $logFile
    echo >> $logFile
 
@@ -847,10 +847,16 @@ else
    echo "===========================================================================" >> $logFile
    echo “smartctl -a /dev/sda” >> $logFile
    smartctl -a /dev/sda >> $logFile 2>&1
-   prog 37
    echo "===========================================================================" >> $logFile
    echo “smartctl -a /dev/sdb” >> $logFile
    smartctl -a /dev/sdb >> $logFile 2>&1
+   echo "===========================================================================" >> $logFile
+   prog 37
+   echo “smartctl -a /dev/sdc” >> $logFile
+   smartctl -a /dev/sdc >> $logFile 2>&1
+   echo "===========================================================================" >> $logFile
+   echo “smartctl -a /dev/sdd” >> $logFile
+   smartctl -a /dev/sdd >> $logFile 2>&1
    prog 38
    echo "===========================================================================" >> $logFile
    echo “smartctl -a /dev/nvme0n1” >> $logFile
@@ -859,7 +865,7 @@ else
    echo >> $logFile
    echo >> $logFile
    echo >> $logFile
-fi
+# fi
 
 prog 40
 
