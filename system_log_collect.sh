@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Run in Ubuntu (x86, arm)
-# 기가바이트 및 범용 시스템 로그 수집
+# System hardware information collector
 
 manufacturer=`ipmitool fru print | grep "Product Manufacturer" | head -1 | cut -c 26-`
 logFile="all_log_system.txt"
@@ -777,11 +777,11 @@ echo >> $logFile
 
 prog 36
 
-# CRA4448 or AVAGO RAID 카드 설치 된 경우
+# If CRA4448 or AVAGO RAID installed
 # if [ `lspci | grep MegaRAID | wc -l` -eq 1 ] && [ -x /opt/MegaRAID/storcli/storcli64 ]; then
 
    echo "===========================================================================" >> $logFile
-   echo "(2) R/C(CRA4448) 구성정보 확인(간략히)" >> $logFile
+   echo "(2) R/C(CRA4448) Summary" >> $logFile
    echo "/opt/MegaRAID/storcli/storcli64 /c0 show" >> $logFile
    echo "===========================================================================" >> $logFile
    /opt/MegaRAID/storcli/storcli64 /c0 show nolog >> $logFile 2>&1
@@ -791,7 +791,7 @@ prog 36
    echo >> $logFile
 
    echo "===========================================================================" >> $logFile
-   echo "(2-1) R/C(CRA4448) 구성정보 확인(자세히)" >> $logFile
+   echo "(2-1) R/C(CRA4448) Detail" >> $logFile
    echo "/opt/MegaRAID/storcli/storcli64 /c0 /eall /sall show" >> $logFile
    echo "===========================================================================" >> $logFile
    /opt/MegaRAID/storcli/storcli64 /c0 /eall /sall show nolog >> $logFile 2>&1
@@ -810,11 +810,11 @@ prog 36
    echo >> $logFile
    echo >> $logFile
 
-# CRA3338 카드 설치 된 경우
+# If CRA3338 installed
 # elif [ `lspci | grep SAS3008 | wc -l` -eq 1 ] && [ -x /usr/local/bin/sas3ircu ]; then
 
    echo "===========================================================================" >> $logFile
-   echo "(3) R/C(CRA3338) 구성정보 확인(간략히)" >> $logFile
+   echo "(3) R/C(CRA3338) Summary" >> $logFile
    echo “/usr/local/bin/sas3ircu DISPLAY” >> $logFile
    echo "===========================================================================" >> $logFile
    /usr/local/bin/sas3ircu 0 DISPLAY >> $logFile 2>&1
@@ -824,7 +824,7 @@ prog 36
    echo >> $logFile
 
    echo "===========================================================================" >> $logFile
-   echo "(3-1) R/C(CRA3338) 구성정보 확인(간략히)" >> $logFile
+   echo "(3-1) R/C(CRA3338) Detail" >> $logFile
    echo “/usr/local/bin/sas3ircu STATUS” >> $logFile
    echo "===========================================================================" >> $logFile
    /usr/local/bin/sas3ircu 0 STATUS >> $logFile 2>&1
@@ -834,7 +834,7 @@ prog 36
    echo >> $logFile
    prog 39
 
-# RAID 카드 없는 경우는 smartctl 정보 수집
+# If RAID not installed
 # else 
    echo >> $logFile
    echo >> $logFile
@@ -903,7 +903,7 @@ echo >> $logFile
 prog 43
 
 echo "===========================================================================" >> $logFile
-echo "(6-1) 사용 가능한 PCI Slot 확인" >> $logFile
+echo "(6-1) Available PCI Slot " >> $logFile
 echo "dmidecode -t slot | grep -i "available" | wc -l" >> $logFile
 echo "===========================================================================" >> $logFile
 sudo dmidecode -t slot | grep -i "available" | wc -l >> $logFile 2>&1
@@ -915,7 +915,7 @@ echo >> $logFile
 prog 45
 
 echo "===========================================================================" >> $logFile
-echo "(6-2) 현재 사용중인 PCI Slot과 해당 BUS 정보 확인" >> $logFile
+echo "(6-2) PCI Slot and BUS" >> $logFile
 echo "dmidecode -t slot | grep -i "in use" -B2 -A5" >> $logFile
 echo "===========================================================================" >> $logFile
 sudo dmidecode -t slot | grep -i "in use" -B2 -A5 >> $logFile 2>&1
@@ -927,7 +927,7 @@ echo >> $logFile
 prog 47
 
 echo "===========================================================================" >> $logFile
-echo "(7) OS 버전 정보 확인(ubuntu)" >> $logFile
+echo "(7) OS Version (ubuntu)" >> $logFile
 echo "sudo cat /etc/os-release" >> $logFile
 echo "===========================================================================" >> $logFile
 sudo cat /etc/os-release >> $logFile 2>&1
@@ -940,7 +940,7 @@ prog 49
 
 if [ -e /etc/redhat-release ]; then
    echo "===========================================================================" >> $logFile
-   echo "(7-1) OS 버전 정보 확인(centos)" >> $logFile
+   echo "(7-1) OS Version (centos)" >> $logFile
    echo "sudo cat /etc/redhat-release" >> $logFile
    echo "===========================================================================" >> $logFile
    sudo cat /etc/redhat-release >> $logFile 2>&1
@@ -952,7 +952,7 @@ fi
 prog 50
 
 echo "===========================================================================" >> $logFile
-echo "(8) Kernel버전 및 Architecture 정보 확인" >> $logFile
+echo "(8) Kernel version and Architecture" >> $logFile
 echo "sudo uname -a" >> $logFile
 echo "===========================================================================" >> $logFile
 sudo uname -a >> $logFile 2>&1
@@ -964,7 +964,7 @@ echo >> $logFile
 prog 52
 
 echo "===========================================================================" >> $logFile
-echo "(9) CPU 정보 확인" >> $logFile
+echo "(9) CPU info " >> $logFile
 echo "sudo lscpu" >> $logFile
 echo "===========================================================================" >> $logFile
 sudo lscpu >> $logFile 2>&1
@@ -988,7 +988,7 @@ echo >> $logFile
 prog 56
 
 echo "===========================================================================" >> $logFile
-echo "(10-1) Partiton 정보 확인" >> $logFile
+echo "(10-1) Partiton info" >> $logFile
 echo "sudo df -h" >> $logFile
 echo "===========================================================================" >> $logFile
 sudo df -h >> $logFile 2>&1
@@ -1096,7 +1096,7 @@ echo >> $logFile
 prog 73
 
 echo "===========================================================================" >> $logFile
-echo "(12-5) ipmitool sensor 정보를 더 자세히 확인(HDD fault 등)" >> $logFile
+echo "(12-5) ipmitool sensor " >> $logFile
 echo "sudo ipmitool sdr elist" >> $logFile
 echo "===========================================================================" >> $logFile
 prog 74
@@ -1109,7 +1109,7 @@ echo >> $logFile
 prog 77
 
 echo "===========================================================================" >> $logFile
-echo "(12-6) ipmitool sensor 정보를 더 자세히 확인(HDD fault 등)" >> $logFile
+echo "(12-6) ipmitool sensor " >> $logFile
 echo "sudo ipmitool sdr -v" >> $logFile
 echo "===========================================================================" >> $logFile
 prog 78
@@ -1183,7 +1183,7 @@ echo >> $logFile
 prog 91
 
 echo "===========================================================================" >> $logFile
-echo "(12-12) SOL(Serial-over-LAN), 콘솔화면을 보기위한 설정 정보를 확인 (인증 허용 여부, Serial BPS 등)" >> $logFile
+echo "(12-12) SOL(Serial-over-LAN)" >> $logFile
 echo "sudo ipmitool -I open sol info 1" >> $logFile
 echo "===========================================================================" >> $logFile
 sudo ipmitool -I open sol info 1 >> $logFile 2>&1
