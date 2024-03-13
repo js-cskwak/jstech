@@ -786,7 +786,6 @@ prog 36
    echo "/opt/MegaRAID/storcli/storcli64 /c0 show" >> $logFile
    echo "===========================================================================" >> $logFile
    /opt/MegaRAID/storcli/storcli64 /c0 show nolog >> $logFile 2>&1
-   prog 37
    echo >> $logFile
    echo >> $logFile
    echo >> $logFile
@@ -796,17 +795,16 @@ prog 36
    echo "/opt/MegaRAID/storcli/storcli64 /c0 /eall /sall show" >> $logFile
    echo "===========================================================================" >> $logFile
    /opt/MegaRAID/storcli/storcli64 /c0 /eall /sall show nolog >> $logFile 2>&1
-   prog 38
    echo >> $logFile
    echo >> $logFile
    echo >> $logFile
 
    echo "===========================================================================" >> $logFile
-   echo "(2-2) R/C(CRA4448) 구성정보 확인(자세히)" >> $logFile
+   echo "(2-2) R/C(CRA4448) Detail" >> $logFile
    echo "/opt/MegaRAID/storcli/storcli64 /c0 /eall /sall show all" >> $logFile
    echo "===========================================================================" >> $logFile
    /opt/MegaRAID/storcli/storcli64 /c0 /eall /sall show all nolog >> $logFile 2>&1
-   prog 39
+   prog 37
    echo >> $logFile
    echo >> $logFile
    echo >> $logFile
@@ -819,7 +817,6 @@ prog 36
    echo “/usr/local/bin/sas3ircu DISPLAY” >> $logFile
    echo "===========================================================================" >> $logFile
    /usr/local/bin/sas3ircu 0 DISPLAY >> $logFile 2>&1
-   prog 37
    echo >> $logFile
    echo >> $logFile
    echo >> $logFile
@@ -829,11 +826,10 @@ prog 36
    echo “/usr/local/bin/sas3ircu STATUS” >> $logFile
    echo "===========================================================================" >> $logFile
    /usr/local/bin/sas3ircu 0 STATUS >> $logFile 2>&1
+   echo >> $logFile
+   echo >> $logFile
+   echo >> $logFile
    prog 38
-   echo >> $logFile
-   echo >> $logFile
-   echo >> $logFile
-   prog 39
 
 # If RAID not installed
 # else 
@@ -844,7 +840,7 @@ prog 36
    echo >> $logFile
 
    echo "===========================================================================" >> $logFile
-   echo "(4) Disk 정보 확인" >> $logFile
+   echo "(4) Disk Info" >> $logFile
    echo "===========================================================================" >> $logFile
    echo “smartctl -a /dev/sda” >> $logFile
    smartctl -a /dev/sda >> $logFile 2>&1
@@ -852,13 +848,11 @@ prog 36
    echo “smartctl -a /dev/sdb” >> $logFile
    smartctl -a /dev/sdb >> $logFile 2>&1
    echo "===========================================================================" >> $logFile
-   prog 37
    echo “smartctl -a /dev/sdc” >> $logFile
    smartctl -a /dev/sdc >> $logFile 2>&1
    echo "===========================================================================" >> $logFile
    echo “smartctl -a /dev/sdd” >> $logFile
    smartctl -a /dev/sdd >> $logFile 2>&1
-   prog 38
    echo "===========================================================================" >> $logFile
    echo “smartctl -a /dev/nvme0n1” >> $logFile
    smartctl -a /dev/nvme0n1 >> $logFile 2>&1
@@ -872,7 +866,7 @@ prog 40
 
 if [ -e /sys/class/fc_host ] && [ -x /usr/bin/systool ]; then
    echo "===========================================================================" >> $logFile
-   echo "(5) LPe16002(FC HBA) 정보 확인(model,serial,fw ver)" >> $logFile
+   echo "(5) LPe16002(FC HBA) Info(model,serial,fw ver)" >> $logFile
    echo "systool -a -v -c scsi_host host1 | egrep Class Device|model|version|proc_name|serialnum" >> $logFile
    echo "===========================================================================" >> $logFile
 
@@ -890,7 +884,7 @@ fi
 prog 41
 
 echo "===========================================================================" >> $logFile
-echo "(6) 전체 PCI Slot 수와 Slot Type 확인" >> $logFile
+echo "(6) PCI Slot and  Slot Type " >> $logFile
 echo "dmidecode -t slot | grep Type | wc -l" >> $logFile
 echo "dmidecode -t slot | grep Type" >> $logFile
 echo "===========================================================================" >> $logFile
@@ -1061,7 +1055,7 @@ echo >> $logFile
 prog 67
 
 echo "===========================================================================" >> $logFile
-echo "(12-2) Management Controller 정보 확인 (IPMI firmware 정보, 제조사 등)" >> $logFile
+echo "(12-2) Management Controller (IPMI firmware)" >> $logFile
 echo "sudo ipmitool -I open mc info" >> $logFile
 echo "===========================================================================" >> $logFile
 sudo ipmitool -I open mc info >> $logFile 2>&1
@@ -1073,7 +1067,7 @@ echo >> $logFile
 prog 69
 
 echo "===========================================================================" >> $logFile
-echo "(12-3) iManagement Controller Channel 정보 확인" >> $logFile
+echo "(12-3) iManagement Controller Channel" >> $logFile
 echo "sudo ipmitool -I open channel info 1" >> $logFile
 echo "===========================================================================" >> $logFile
 sudo ipmitool -I open channel info 1 >> $logFile 2>&1
