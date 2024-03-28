@@ -4,15 +4,18 @@
 # System hardware information collector
 # update
 
-manufacturer=`ipmitool fru print | grep "Product Manufacturer" | head -1 | cut -c 26-`
-logFile="all_log_system.txt"
+#manufacturer=`ipmitool fru print | grep "Product Manufacturer" | head -1 | cut -c 26-`
+#logFile="all_log_system.txt"
 
-if [ $manufacturer = "GIGABYTE" ] 
-then
-   model=`ipmitool fru print | grep "Product Name" | head -1 | cut -c 26-`
-   serial=`ipmitool fru print | grep "Product Serial" | head -1 | cut -c 26-`
-   logFile="all_log_system_${model}_${serial}.txt"
-fi
+#if [ $manufacturer = "GIGABYTE" ] 
+#then
+model=$(ipmitool fru print | grep "Product Name" | head -1 | cut -d":" -f2)
+serial=$(ipmitool fru print | grep "Product Serial" | head -1 | cut -d":" -f2)
+
+model=$(echo $model)
+serial=$(echo $serial)
+logFile="all_log_system_${model}_${serial}.txt"
+#fi
 
 sudo rm -rf $logFile
 
