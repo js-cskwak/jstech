@@ -12,7 +12,7 @@
 model=$(ipmitool fru print | grep "Product Name" | head -1 | cut -d":" -f2)
 serial=$(ipmitool fru print | grep "Product Serial" | head -1 | cut -d":" -f2)
 
-model=$(echo $model)
+model=$(echo $model | tr -d ' ')
 serial=$(echo $serial)
 logFile="all_log_system_${model}_${serial}.txt"
 #fi
