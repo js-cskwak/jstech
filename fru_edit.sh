@@ -3,7 +3,7 @@ Manufacturer="JS Technology Inc."
 Name="JG2203A-V4"
 Serial="S202432100004"
 
-ipmitool fru edit 0 field p 0 ${Manufacturer}
+ipmitool fru edit 0 field p 0 "${Manufacturer}"
 
 sleep 2
 
