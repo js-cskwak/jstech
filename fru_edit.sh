@@ -1,7 +1,7 @@
 #!/bin/bash
 
 Manufacturer="JS Technology Inc."
-Name="JG2203A-V4"
+Name="JG2202A-V3"
 #Serial="S202432100004"
 
 ipmitool fru edit 0 field p 0 "${Manufacturer}"
