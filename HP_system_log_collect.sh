@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # For HP system log collection
-storageid=" "
+
 #########################
 # 사전설치 S/W
 # - ilorest
@@ -699,6 +699,7 @@ echo >> $logFile
 echo >> $logFile
 prog 21
 
+storageid=$(ilorest storagecontroller | grep HPE | cut -d":" -f 1)
 
 echo "===========================================================================" >> $logFile
 echo "(04-02) R/C 구성정보 확인(자세히)" >> $logFile
