@@ -86,7 +86,7 @@ echo -e "${c[H2]}  CPU:${c[0]}"
       }
     '
 echo -e "${c[H2]}  Memory:${c[0]}"
-  MemSize=`dmidecode -t memory | grep Size | head -1 | cut -d":" -f2`
+  MemSize=`dmidecode -t memory | grep Size | grep GB | head -1 | cut -d":" -f2`
   echo -e "${c[H3]}    Memory Size:${c[0]}${MemSize}" 
   gawk 'BEGIN { RS="\nHandle" } /Physical Memory Array|Memory Device/' <<<"$dmidecode_input" |
     gawk -vH3="${c[H3]}" -vH2="${c[H2]}" -vH0="${c[0]}" -vH_IMP="${c[Imp]}" '
@@ -167,7 +167,7 @@ echo -e "  CPU:" >> $logFile
     ' >> $logFile
 
 echo -e "  Memory:" >> $logFile
-  MemSize=`dmidecode -t memory | grep Size | head -1 | cut -d":" -f2`
+  MemSize=`dmidecode -t memory | grep Size | grep GB | head -1 | cut -d":" -f2`
   echo -e "    Memory Size:${MemSize}" >> $logFile 
   gawk 'BEGIN { RS="\nHandle" } /Physical Memory Array|Memory Device/' <<<"$dmidecode_input" |
     gawk -vH3="${c[H3]}" -vH2="${c[H2]}" -vH0="${c[0]}" -vH_IMP="${c[Imp]}" '
